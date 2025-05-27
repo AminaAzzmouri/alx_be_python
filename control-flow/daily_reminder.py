@@ -10,15 +10,18 @@ match priority:
     case "high":
         message = f"Reminder: '{task}' is a high priority task"
     case "medium":
-        message = f"Note: '{task}' is a medium priority task"
+        message = f"Reminder: '{task}' is a medium priority task"
     case "low":
-        message = f"Note: '{task}' is a low priority task"
+        message = f"Reminder: '{task}' is a low priority task"
     case _:
-        message = f"'{task}' has an unrecognized priority level"
+        message = f"Reminder: '{task}' has an unrecognized priority level"
 
 # Check time sensitivity
 if time_bound == "yes":
     message += " that requires immediate attention today!"
+else:
+    # For non-time-bound tasks, add a friendly suggestion
+    message += ". Consider completing it when you have free time."
 
 # Print final reminder
 print(message)
