@@ -1,27 +1,28 @@
 # daily_reminder.py
 
-# Prompt for a single task
 task = input("Enter your task: ")
 priority = input("Priority (high/medium/low): ").strip().lower()
 time_bound = input("Is it time-bound? (yes/no): ").strip().lower()
 
-# Generate customized reminder
 match priority:
     case "high":
-        message = f"Reminder: '{task}' is a high priority task"
+        if time_bound == "yes":
+            print(f"Reminder: '{task}' is a high priority task that requires immediate attention today!")
+        else:
+            print(f"Reminder: '{task}' is a high priority task. Consider completing it when you have free time.")
     case "medium":
-        message = f"Reminder: '{task}' is a medium priority task"
+        if time_bound == "yes":
+            print(f"Reminder: '{task}' is a medium priority task that requires immediate attention today!")
+        else:
+            print(f"Reminder: '{task}' is a medium priority task. Consider completing it when you have free time.")
     case "low":
-        message = f"Reminder: '{task}' is a low priority task"
+        if time_bound == "yes":
+            print(f"Reminder: '{task}' is a low priority task that requires immediate attention today!")
+        else:
+            print(f"Reminder: '{task}' is a low priority task. Consider completing it when you have free time.")
     case _:
-        message = f"Reminder: '{task}' has an unrecognized priority level"
-
-# Check time sensitivity
-if time_bound == "yes":
-    message += " that requires immediate attention today!"
-else:
-    # For non-time-bound tasks, add a friendly suggestion
-    message += ". Consider completing it when you have free time."
-
-# Print final reminder
-print(message)
+        # For unrecognized priority, just print something similar
+        if time_bound == "yes":
+            print(f"Reminder: '{task}' has an unrecognized priority level that requires immediate attention today!")
+        else:
+            print(f"Reminder: '{task}' has an unrecognized priority level.")
